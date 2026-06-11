@@ -312,6 +312,35 @@
   .nav-arrow-btn:hover { color:var(--t1); border-color:rgba(212,175,55,0.4); background:var(--glass-hi); }
   .nav-arrow-btn:active { transform:scale(0.96); }
 
+  /* ── TOP-RIGHT NAV ── */
+  #topnav {
+    position:fixed; top:12px; right:14px; z-index:300;
+    display:flex; align-items:center;
+    background:rgba(8,17,32,0.85);
+    backdrop-filter:blur(16px); -webkit-backdrop-filter:blur(16px);
+    border:1px solid rgba(255,255,255,0.10);
+    border-radius:10px; overflow:hidden;
+    box-shadow:0 2px 14px rgba(0,0,0,0.45);
+  }
+  .tn-btn {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:36px; height:34px;
+    border:none; background:transparent;
+    color:rgba(255,255,255,0.4); cursor:pointer;
+    transition:all 0.15s ease;
+  }
+  .tn-btn:hover { color:var(--gold); background:rgba(212,175,55,0.09); }
+  .tn-btn:active { transform:scale(0.93); }
+  .tn-btn svg { width:13px; height:13px; }
+  #tn-counter {
+    font-size:11px; font-weight:700; color:rgba(255,255,255,0.5);
+    font-family:'Inter',sans-serif; font-variant-numeric:tabular-nums;
+    letter-spacing:1px; padding:0 12px; min-width:54px; text-align:center;
+    border-left:1px solid rgba(255,255,255,0.08);
+    border-right:1px solid rgba(255,255,255,0.08);
+    height:34px; display:inline-flex; align-items:center; justify-content:center;
+  }
+
   /* ── TYPOGRAPHY — executive hierarchy ── */
   .slide-eyebrow {
     display:inline-flex; align-items:center; gap:8px;
@@ -336,7 +365,7 @@
   .sec-div { display:flex; align-items:center; gap:12px; margin: var(--s3) 0 var(--s2); }
   .sec-div-line { flex:1; height:1px; background:var(--grid); }
   .sec-div-label {
-    font-size:11px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase;
+    font-size:13px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase;
     color:var(--t3); white-space:nowrap;
     font-family:'Inter',sans-serif;
   }
@@ -364,11 +393,20 @@
     border-radius: 1px;
     opacity:0; transition:opacity var(--t-fast) var(--ease);
   }
-  .card-head { font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--t3); margin-bottom: var(--s1); font-family:'Inter',sans-serif; }
+  .card-head { font-size:13px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--t3); margin-bottom: var(--s1); font-family:'Inter',sans-serif; }
   .card-val { font-family:'Plus Jakarta Sans',sans-serif; font-size:32px; font-weight:800; letter-spacing:-0.5px; font-variant-numeric: tabular-nums; }
-  .card-desc { font-size:13px; color:var(--t2); margin-top:6px; line-height:1.55; }
+  .card-desc { font-size:14.5px; color:var(--t2); margin-top:6px; line-height:1.55; }
 
-  .clk { cursor:pointer; }
+  .clk { cursor:pointer; position:relative; }
+  .clk::after {
+    content:'👆';
+    position:absolute; top:8px; right:10px;
+    font-size:14px; opacity:0.55;
+    pointer-events:none;
+    transition:opacity var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+  }
+  .clk:hover::after { opacity:1; transform:scale(1.2); }
+  .tech-card.clk::after { top:6px; right:8px; font-size:12px; }
   .clk:hover {
     border-color: rgba(212,175,55,0.35);
     background: var(--glass-hi);
@@ -419,7 +457,7 @@
   .tphase { flex:1; padding: var(--s2); background:var(--glass); border:1px solid var(--grid-b); border-top:2px solid; }
   .tphase:first-child { border-radius:10px 0 0 10px; }
   .tphase:last-child { border-radius:0 10px 10px 0; }
-  .tphase-label { font-size:10px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--t4); font-family:'Inter',sans-serif; }
+  .tphase-label { font-size:12px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--t4); font-family:'Inter',sans-serif; }
   .tphase-name { font-size:13.5px; font-weight:600; margin:5px 0 3px; color:var(--t1); }
   .tphase-period { font-size:11.5px; color:var(--t3); font-family:'Inter',sans-serif; font-variant-numeric:tabular-nums; }
 
@@ -452,8 +490,8 @@
   .tech-card.clk:hover { border-color:rgba(212,175,55,0.35); background:var(--glass-hi); transform:translateY(-2px); box-shadow:var(--sh-2); }
   .tech-emoji { font-size:30px; line-height:1.2; margin-bottom:4px; }
   .tech-icon { font-size:15px; letter-spacing:0.04em; font-family:'Plus Jakarta Sans',sans-serif; font-weight:800; color:var(--gold); margin-bottom: var(--s1); }
-  .tech-name { font-size:12.5px; font-weight:700; margin-bottom:5px; color:var(--t1); font-family:'Plus Jakarta Sans',sans-serif; letter-spacing:0.3px; }
-  .tech-desc { font-size:12px; color:var(--t3); line-height:1.6; }
+  .tech-name { font-size:14px; font-weight:700; margin-bottom:5px; color:var(--t1); font-family:'Plus Jakarta Sans',sans-serif; letter-spacing:0.3px; }
+  .tech-desc { font-size:13.5px; color:var(--t3); line-height:1.6; }
 
   /* ── PROG BADGE ── */
   .prog-badge { display:inline-block; padding:3px 11px; border-radius:6px; font-size:11px; font-weight:600; font-family:'Inter',sans-serif; letter-spacing:0.4px; border:1px solid transparent; }
@@ -496,7 +534,7 @@
   .form-action-btn {
     display:inline-flex; align-items:center; gap:8px;
     padding:9px 18px; border:1px solid; border-radius:8px; cursor:pointer;
-    font-size:12.5px; font-weight:600; font-family:'Plus Jakarta Sans',sans-serif;
+    font-size:13.5px; font-weight:600; font-family:'Plus Jakarta Sans',sans-serif;
     letter-spacing:0.4px; transition:all var(--t-fast) var(--ease);
   }
   .form-action-btn.primary { background:rgba(212,175,55,0.14); color:var(--gold); border-color:rgba(212,175,55,0.35); }
@@ -508,7 +546,7 @@
   .qr-box { width:84px; height:84px; border-radius:10px; background:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; padding:6px; }
   .qr-box img { width:100%; height:100%; }
   .qr-title { font-size:14px; font-weight:700; margin-bottom:4px; font-family:'Plus Jakarta Sans',sans-serif; color:var(--t1); }
-  .qr-desc { font-size:12.5px; color:var(--t2); line-height:1.6; }
+  .qr-desc { font-size:14px; color:var(--t2); line-height:1.6; }
   .qr-url { font-size:10.5px; color:var(--t4); margin-top:5px; word-break:break-all; font-family:'Inter',sans-serif; }
   .form-actions { display:flex; gap:10px; align-items:center; padding: var(--s2) 0 0; flex-wrap:wrap; }
   .form-iframe-wrap { overflow:hidden; border:1px solid var(--grid-b); border-radius:12px; background:#fff; }
@@ -525,7 +563,7 @@
   .kahoot-step-text { flex:1; font-size:13px; color:var(--t2); line-height:1.55; }
   .kahoot-step-text strong { color:var(--t1); }
   .kahoot-pin-box { display:flex; align-items:center; gap: var(--s2); padding:14px 17px; border-radius:10px; background:var(--glass); border:1px solid rgba(180,96,124,0.25); margin-bottom: var(--s2); }
-  .kahoot-pin-label { font-size:10px; font-weight:600; color:var(--t4); text-transform:uppercase; letter-spacing:2px; font-family:'Inter',sans-serif; }
+  .kahoot-pin-label { font-size:12px; font-weight:600; color:var(--t4); text-transform:uppercase; letter-spacing:2px; font-family:'Inter',sans-serif; }
   .kahoot-pin-val { font-family:'Plus Jakarta Sans',sans-serif; font-size:24px; font-weight:800; color:var(--p2l); letter-spacing:4px; font-variant-numeric:tabular-nums; }
   .kahoot-pin-note { font-size:11px; color:var(--t3); margin-top:3px; font-family:'Inter',sans-serif; }
 
@@ -545,21 +583,21 @@
   .nav-item:active { transform:scale(0.985); }
   .nav-item.cur { border-color:rgba(212,175,55,0.45); background:rgba(212,175,55,0.06); }
   .nav-icon { font-size:13px; flex-shrink:0; width:30px; text-align:center; font-family:'Plus Jakarta Sans',sans-serif; font-weight:700; color:var(--gold); }
-  .nav-num { font-size:9.5px; font-weight:600; letter-spacing:1.8px; text-transform:uppercase; color:var(--t4); font-family:'Inter',sans-serif; }
+  .nav-num { font-size:11px; font-weight:600; letter-spacing:1.8px; text-transform:uppercase; color:var(--t4); font-family:'Inter',sans-serif; }
   .nav-name { font-size:12.5px; font-weight:600; color:var(--t1); font-family:'Plus Jakarta Sans',sans-serif; }
   .nav-sub { font-size:11px; color:var(--t3); font-family:'Inter',sans-serif; }
-  .nav-section-head { font-size:10.5px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--t4); padding:14px 0 5px; grid-column:span 2; border-bottom:1px solid var(--grid); margin-bottom:5px; font-family:'Inter',sans-serif; }
+  .nav-section-head { font-size:12px; font-weight:600; letter-spacing:2.5px; text-transform:uppercase; color:var(--t4); padding:14px 0 5px; grid-column:span 2; border-bottom:1px solid var(--grid); margin-bottom:5px; font-family:'Inter',sans-serif; }
 
   /* ── INFO POPUP CONTENT ── */
   .ip-section { margin-bottom: var(--s2); }
-  .ip-label { font-size:11px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:7px; font-family:'Inter',sans-serif; }
+  .ip-label { font-size:13px; font-weight:600; letter-spacing:2px; text-transform:uppercase; color:var(--gold); margin-bottom:7px; font-family:'Inter',sans-serif; }
   .ip-text { font-size:14.5px; color:var(--t2); line-height:1.75; }
   .ip-list { margin:0; padding-left:18px; }
   .ip-list li { font-size:13.5px; color:var(--t2); line-height:1.9; }
   .ip-stat-row { display:flex; gap:10px; margin-bottom: var(--s2); flex-wrap:wrap; }
   .ip-stat { flex:1; min-width:110px; background:var(--glass); border:1px solid var(--grid-b); border-radius:10px; padding:13px 15px; }
   .ip-stat-val { font-family:'Plus Jakarta Sans',sans-serif; font-size:24px; font-weight:800; font-variant-numeric:tabular-nums; }
-  .ip-stat-lbl { font-size:10.5px; color:var(--t4); margin-top:3px; font-family:'Inter',sans-serif; }
+  .ip-stat-lbl { font-size:12.5px; color:var(--t4); margin-top:3px; font-family:'Inter',sans-serif; }
   .ip-badge-row { display:flex; flex-wrap:wrap; gap:6px; }
   .ip-badge { font-size:11.5px; padding:4px 12px; border-radius:6px; border:1px solid var(--grid-b); color:var(--t2); background:var(--glass); font-family:'Inter',sans-serif; }
 
@@ -587,21 +625,21 @@
     border: 1px solid rgba(212,175,55,0.32);
     border-radius: 7px;
     padding:7px 16px; margin-bottom: var(--s3); width:fit-content;
-    font-size:10.5px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
+    font-size:12px; font-weight:600; letter-spacing:3px; text-transform:uppercase;
     color:var(--gold); font-family:'Inter',sans-serif;
   }
   .cover-title {
-    font-family:'Plus Jakarta Sans',sans-serif; font-size:46px; font-weight:800; line-height:1.08;
-    margin-bottom: var(--s2); letter-spacing:-1px;
+    font-family:'Plus Jakarta Sans',sans-serif; font-size:60px; font-weight:800; line-height:1.06;
+    margin-bottom: var(--s2); letter-spacing:-1.5px;
   }
-  .cover-sub { font-size:14px; color:var(--muted); line-height:1.75; margin-bottom: var(--s3); max-width:440px; font-family:'Inter',sans-serif; }
+  .cover-sub { font-size:16.5px; color:rgba(255,255,255,0.72); line-height:1.8; margin-bottom: var(--s3); max-width:460px; font-family:'Inter',sans-serif; font-weight:400; }
   .cover-stats { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
   .cstat {
     background: var(--glass); border:1px solid var(--grid-b); border-radius:12px;
     padding:14px 16px;
   }
-  .cstat-num { font-family:'Plus Jakarta Sans',sans-serif; font-size:28px; font-weight:800; color:var(--gold); font-variant-numeric:tabular-nums; }
-  .cstat-label { font-size:10.5px; color:var(--t3); margin-top:3px; font-family:'Inter',sans-serif; letter-spacing:0.4px; }
+  .cstat-num { font-family:'Plus Jakarta Sans',sans-serif; font-size:38px; font-weight:800; color:var(--gold); font-variant-numeric:tabular-nums; }
+  .cstat-label { font-size:12px; color:var(--t3); margin-top:4px; font-family:'Inter',sans-serif; letter-spacing:0.4px; }
 
   .cover-right {
     display:flex; flex-direction:column; justify-content:center; padding: var(--s6) var(--s5); gap:11px;
@@ -623,18 +661,18 @@
     border:1px solid;
   }
   .prog-card-text { flex:1; }
-  .prog-card-name { font-size:13.5px; font-weight:700; font-family:'Plus Jakarta Sans',sans-serif; letter-spacing:0.2px; }
-  .prog-card-desc { font-size:11.5px; color:var(--t3); margin-top:3px; font-family:'Inter',sans-serif; }
-  .prog-card-budget { font-size:11px; font-weight:700; padding:3px 10px; border-radius:6px; border:1px solid; font-family:'Inter',sans-serif; font-variant-numeric:tabular-nums; width:108px; text-align:center; box-sizing:border-box; flex-shrink:0; }
+  .prog-card-name { font-size:15px; font-weight:700; font-family:'Plus Jakarta Sans',sans-serif; letter-spacing:0.2px; }
+  .prog-card-desc { font-size:14px; color:var(--t3); margin-top:4px; font-family:'Inter',sans-serif; }
+  .prog-card-budget { font-size:12.5px; font-weight:700; padding:6px 10px; border-radius:6px; border:1px solid; font-family:'Inter',sans-serif; font-variant-numeric:tabular-nums; width:76px; text-align:center; box-sizing:border-box; flex-shrink:0; white-space:normal; line-height:1.35; }
   .arrow-icon { color:var(--t4); font-size:14px; font-family:'Inter',sans-serif; }
 
   /* ── MISC LAYOUT ── */
   .align-col { display:flex; flex-direction:column; gap:9px; }
   .align-item { background:var(--glass); border-radius:10px; border-left:3px solid; padding:13px 17px; }
-  .align-teras { font-size:10px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--t4); font-family:'Inter',sans-serif; }
+  .align-teras { font-size:12px; font-weight:600; letter-spacing:1.5px; text-transform:uppercase; color:var(--t4); font-family:'Inter',sans-serif; }
   .align-title { font-size:14px; font-weight:600; margin:4px 0; color:var(--t1); }
   .align-progs { display:flex; flex-wrap:wrap; gap:5px; margin-top:5px; }
-  .ap { font-size:10px; padding:3px 9px; border-radius:5px; font-weight:600; font-family:'Inter',sans-serif; }
+  .ap { font-size:12px; padding:3px 9px; border-radius:5px; font-weight:600; font-family:'Inter',sans-serif; }
 
   .ov-card { display:flex; align-items:flex-start; gap:13px; padding:13px 16px; border-radius:12px; margin-bottom:9px; cursor:pointer; border:1px solid var(--grid-b); background:var(--glass); transition:all var(--t-fast) var(--ease); }
   .ov-card:hover { background:var(--glass-hi); transform:translateX(4px); border-color:rgba(212,175,55,0.3); }
@@ -660,7 +698,7 @@
 
   /* ── SEE MORE ── */
   .hdr-chips { display:flex; gap:10px; margin:4px 0 18px; }
-  .hdr-chip { flex:1; display:flex; align-items:center; justify-content:center; gap:7px; padding:9px 10px; border-radius:9px; border:1px solid; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif; font-size:11px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; transition:transform .2s cubic-bezier(.2,.8,.3,1), box-shadow .2s; }
+  .hdr-chip { flex:1; display:flex; align-items:center; justify-content:center; gap:7px; padding:9px 10px; border-radius:9px; border:1px solid; cursor:pointer; font-family:'Plus Jakarta Sans',sans-serif; font-size:12.5px; font-weight:700; letter-spacing:0.06em; text-transform:uppercase; transition:transform .2s cubic-bezier(.2,.8,.3,1), box-shadow .2s; }
   .hdr-chip:hover { transform:translateY(-2px); box-shadow:var(--sh-1); }
   .hdr-chip svg { width:13px; height:13px; flex-shrink:0; }
   .see-more-btn {
@@ -697,11 +735,25 @@
 <body>
 <div id="app">
 
+<!-- ══ TOP-RIGHT NAV ══ -->
+<div id="topnav">
+  <button class="tn-btn" onclick="goHome()" title="Utama" style="border-right:1px solid rgba(255,255,255,0.08);width:38px;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+  </button>
+  <button class="tn-btn" onclick="prev()" title="Sebelum">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="15,18 9,12 15,6"/></svg>
+  </button>
+  <span id="tn-counter">1 / 18</span>
+  <button class="tn-btn" onclick="next()" title="Seterusnya">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9,18 15,12 9,6"/></svg>
+  </button>
+</div>
+
 <!-- ══ TOOLBAR ══ -->
 <div id="toolbar">
   <span class="tb-logo">KEMAS BPKOM</span>
   <div class="tb-sep"></div>
-  <button class="tb-btn" id="btn-home" onclick="goHome()" title="Halaman Utama">
+  <button class="tb-btn" id="btn-home" onclick="goHome()" title="Halaman Utama" style="border-color:rgba(255,255,255,0.15);">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
     Utama
   </button>
@@ -709,7 +761,7 @@
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15,18 9,12 15,6"/></svg>
     Kembali
   </button>
-  <button class="tb-btn" id="btn-overview" onclick="openOverview()" title="Semua Slide">
+  <button class="tb-btn" id="btn-overview" onclick="openOverview()" title="Semua Slide" style="border-color:rgba(255,255,255,0.15);">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
     Semua Slide
   </button>
@@ -717,6 +769,11 @@
   <button class="tb-btn" onclick="openRepo()" style="border-color:rgba(212,175,55,0.4);color:var(--gold);background:rgba(212,175,55,0.08);">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 01-2 2H4a2 2 0 01-2-2V5a2 2 0 012-2h5l2 3h9a2 2 0 012 2z"/></svg>
     Repositori
+  </button>
+  <div class="tb-sep"></div>
+  <button class="tb-btn" onclick="openTeam()" style="border-color:rgba(139,92,246,0.4);color:#c4b5fd;background:rgba(139,92,246,0.08);">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+    Team Members
   </button>
   <div class="tb-sep"></div>
   <div id="search-wrap">
@@ -768,7 +825,7 @@
           <div class="prog-card-name p1-col">Kursus Kesedaran Sivik & Kenegaraan</div>
           <div class="prog-card-desc">Jati diri  &middot;  Patriotisme  &middot;  Kesejahteraan Keluarga</div>
         </div>
-        <div class="prog-card-budget">RM10-12K/siri</div>
+        <div class="prog-card-budget">RM10-12K/<br>siri</div>
         <div class="arrow-icon">></div>
       </div>
       <div class="prog-card" onclick="goTo(6)">
@@ -777,7 +834,7 @@
           <div class="prog-card-name p2-col">Program Motivasi & Kepimpinan</div>
           <div class="prog-card-desc">Keluarga Sejahtera  &middot;  Belia  &middot;  Modal Insan</div>
         </div>
-        <div class="prog-card-budget">RM10-12K/siri</div>
+        <div class="prog-card-budget">RM10-12K/<br>siri</div>
         <div class="arrow-icon">></div>
       </div>
       <div class="prog-card" onclick="goTo(9)">
@@ -786,7 +843,7 @@
           <div class="prog-card-name p3-col">Program Keceriaan Kampung: Rumah Sempurna</div>
           <div class="prog-card-desc">Estetika  &middot;  Ekonomi Desa  &middot;  Warisan Budaya</div>
         </div>
-        <div class="prog-card-budget">RM15-17K/siri</div>
+        <div class="prog-card-budget">RM15-17K/<br>siri</div>
         <div class="arrow-icon">></div>
       </div>
       <div class="prog-card" onclick="goTo(12)">
@@ -795,7 +852,7 @@
           <div class="prog-card-name p4-col">Laman Agro Bistari</div>
           <div class="prog-card-desc">Pertanian Moden  &middot;  Keterjaminan Makanan  &middot;  Ekonomi</div>
         </div>
-        <div class="prog-card-budget">RM15K/siri</div>
+        <div class="prog-card-budget">RM15K/<br>siri</div>
         <div class="arrow-icon">></div>
       </div>
     </div>
@@ -814,17 +871,17 @@
     <div class="card-grid g3" style="margin-bottom:24px;">
       <div class="card clk" onclick="openInfo('teras3')" style="border-color:rgba(245,166,35,0.3);">
         <div class="card-head">Teras 3</div>
-        <div class="card-val" style="color:#ECB077;font-size:18px;">Modal Insan Berkualiti</div>
+        <div class="card-val" style="color:#ECB077;font-size:20px;">Modal Insan Berkualiti</div>
         <div class="card-desc">Strategi 5  -  membangun kapasiti sumber manusia komuniti desa</div>
       </div>
       <div class="card clk" onclick="openInfo('teras5')" style="border-color:rgba(46,111,191,0.4);">
         <div class="card-head">Teras 5</div>
-        <div class="card-val" style="color:#7EB8FF;font-size:18px;">Keunggulan Belia Luar Bandar</div>
+        <div class="card-val" style="color:#7EB8FF;font-size:20px;">Keunggulan Belia Luar Bandar</div>
         <div class="card-desc">Strategi 3  -  memperkasakan generasi muda komuniti</div>
       </div>
       <div class="card clk" onclick="openInfo('teras7')" style="border-color:rgba(13,122,110,0.4);">
         <div class="card-head">Teras 7</div>
-        <div class="card-val" style="color:#A3CFB8;font-size:18px;">Kehidupan Luar Bandar Sejahtera</div>
+        <div class="card-val" style="color:#A3CFB8;font-size:20px;">Kehidupan Luar Bandar Sejahtera</div>
         <div class="card-desc">Strategi 1 & 2  -  kualiti hidup, kesejahteraan dan keterjaminan</div>
       </div>
     </div>
@@ -984,8 +1041,8 @@
     <div class="card-grid g4" style="margin-bottom:24px;">
       <div class="card"><div class="card-head">Tempoh</div><div class="card-val p1-col">1 Hari</div><div class="card-desc">per siri</div></div>
       <div class="card"><div class="card-head">Peserta</div><div class="card-val p1-col">100</div><div class="card-desc">orang/siri</div></div>
-      <div class="card clk" onclick="openInfo('a1_siri')"><div class="card-head">Sasaran 2026</div><div class="card-val p1-col">98 Siri</div><div class="card-desc">4,900 peserta</div></div>
-      <div class="card clk" onclick="openInfo('a1_bajet')"><div class="card-head">Bajet/Siri</div><div class="card-val p1-col">RM10-12K</div><div class="card-desc">Sem / Sabah+Swk</div></div>
+      <div class="card clk" onclick="openInfo('a1_siri')"><div class="card-head">Sasaran 2026 👆</div><div class="card-val p1-col">98 Siri</div><div class="card-desc">4,900 peserta</div></div>
+      <div class="card clk" onclick="openInfo('a1_bajet')"><div class="card-head">Bajet/Siri 👆</div><div class="card-val p1-col">RM10-12K</div><div class="card-desc">Sem / Sabah+Swk</div></div>
     </div>
     
     <div style="display:flex;align-items:center;gap:10px;">
@@ -1107,7 +1164,7 @@
     <div class="slide-title">6 Modul Program</div>
     <div class="slide-subtitle">Pelaksanaan interaktif  -  ceramah, LDK, forum, simulasi & aktiviti lapangan</div>
     <div class="slot-grid">
-      <div class="slot clk" onclick="openInfo('slot_kenegaraan')" style="border-top:3px solid var(--lblue);">
+      <div class="slot clk" onclick="openInfo('slot_kenegaraan')" title="Klik untuk maklumat lanjut" style="border-top:3px solid var(--lblue);">
         <div class="slot-title p1-col">Kenegaraan & Jati Diri</div>
         <div class="slot-item"><div class="slot-dot" style="background:var(--lblue);"></div>Taklimat Rukun Negara & Perlembagaan</div>
         <div class="slot-item"><div class="slot-dot" style="background:var(--lblue);"></div>Tayangan video sejarah & patriotisme</div>
@@ -1121,7 +1178,7 @@
         <div class="slot-item"><div class="slot-dot" style="background:#9B59B6;"></div>Kempen Kesedaran Keselamatan Jalan Raya</div>
         <div class="slot-item"><div class="slot-dot" style="background:#9B59B6;"></div>Adab & tanggungjawab sosial dalam keluarga</div>
       </div>
-      <div class="slot clk" onclick="openInfo('slot_keluarga')" style="border-top:3px solid #E74C3C;">
+      <div class="slot clk" onclick="openInfo('slot_keluarga')" title="Klik untuk maklumat lanjut" style="border-top:3px solid #E74C3C;">
         <div class="slot-title" style="color:#F1948A;">Kesejahteraan Keluarga</div>
         <div class="slot-item"><div class="slot-dot" style="background:#E74C3C;"></div>Pengurusan emosi & komunikasi keluarga</div>
         <div class="slot-item"><div class="slot-dot" style="background:#E74C3C;"></div>Peranan ibu bapa dalam pembentukan sahsiah</div>
@@ -1134,7 +1191,7 @@
         <div class="slot-item"><div class="slot-dot" style="background:#27AE60;"></div>Gotong-royong & kebersamaan komuniti</div>
         <div class="slot-item"><div class="slot-dot" style="background:#27AE60;"></div>Semangat kejiranan & kesukarelawanan</div>
       </div>
-      <div class="slot clk" onclick="openInfo('slot_digital')" style="border-top:3px solid #F39C12;">
+      <div class="slot clk" onclick="openInfo('slot_digital')" title="Klik untuk maklumat lanjut" style="border-top:3px solid #F39C12;">
         <div class="slot-title" style="color:#FAD7A0;">Literasi Digital</div>
         <div class="slot-item"><div class="slot-dot" style="background:#F39C12;"></div>Bahaya berita palsu & penipuan dalam talian</div>
         <div class="slot-item"><div class="slot-dot" style="background:#F39C12;"></div>Kaedah semakan maklumat (Sebenarnya.my)</div>
@@ -1463,19 +1520,19 @@
       <!-- 5 Threats -->
       <g onclick="openInfo('isu_dadah')" style="cursor:pointer;">
       <rect x="10"  y="10" width="150" height="34" rx="8" fill="rgba(192,57,43,0.18)" stroke="rgba(192,57,43,0.45)" stroke-width="1.5"/>
-      <text x="85"  y="31" text-anchor="middle" fill="#F1948A" font-size="10.5" font-weight="600">Ancaman Dadah</text>
+      <text x="85"  y="31" text-anchor="middle" fill="#F1948A" font-size="10.5" font-weight="600">Ancaman Dadah &nbsp;👆</text>
       </g>
       <g onclick="openInfo('isu_buli')" style="cursor:pointer;">
       <rect x="10"  y="50" width="150" height="34" rx="8" fill="rgba(192,57,43,0.18)" stroke="rgba(192,57,43,0.45)" stroke-width="1.5"/>
-      <text x="85"  y="71" text-anchor="middle" fill="#F1948A" font-size="10" font-weight="600">Buli &amp; Ponteng Sekolah</text>
+      <text x="85"  y="71" text-anchor="middle" fill="#F1948A" font-size="10" font-weight="600">Buli &amp; Ponteng Sekolah &nbsp;👆</text>
       </g>
       <g onclick="openInfo('isu_siber')" style="cursor:pointer;">
       <rect x="10"  y="90" width="150" height="34" rx="8" fill="rgba(192,57,43,0.18)" stroke="rgba(192,57,43,0.45)" stroke-width="1.5"/>
-      <text x="85"  y="111" text-anchor="middle" fill="#F1948A" font-size="10.5" font-weight="600">Ancaman Scammer</text>
+      <text x="85"  y="111" text-anchor="middle" fill="#F1948A" font-size="10.5" font-weight="600">Ancaman Scammer &nbsp;👆</text>
       </g>
       <g onclick="openInfo('isu_penyakit')" style="cursor:pointer;">
       <rect x="180" y="30" width="150" height="34" rx="8" fill="rgba(192,57,43,0.18)" stroke="rgba(192,57,43,0.45)" stroke-width="1.5"/>
-      <text x="255" y="51" text-anchor="middle" fill="#F1948A" font-size="10.5" font-weight="600">Penularan Penyakit</text>
+      <text x="255" y="51" text-anchor="middle" fill="#F1948A" font-size="10.5" font-weight="600">Penularan Penyakit &nbsp;👆</text>
       </g>
       <g onclick="openInfo('isu_keluarga')" style="cursor:pointer;">
       <rect x="180" y="70" width="150" height="34" rx="8" fill="rgba(192,57,43,0.18)" stroke="rgba(192,57,43,0.45)" stroke-width="1.5"/>
@@ -1606,27 +1663,27 @@
       </thead>
       <tbody>
         <tr>
-          <td style="cursor:pointer;" onclick="openInfo('isu_dadah')"><span style="color:#F1948A;font-weight:600;text-decoration:underline dotted rgba(241,148,138,0.5);">Ancaman Dadah</span></td>
+          <td style="cursor:pointer;" onclick="openInfo('isu_dadah')"><span style="color:#F1948A;font-weight:600;text-decoration:underline dotted rgba(241,148,138,0.5);">Ancaman Dadah &nbsp;👆</span></td>
           <td>Simulasi "Pilihan Hidup Saya"  &middot;  Ceramah Anti Dadah  &middot;  Forum Bekas Penagih Berjaya  &middot;  Aku Janji Keluarga Bebas Dadah</td>
           <td>Faham kesan dadah &amp; peranan keluarga dalam pencegahan</td>
         </tr>
         <tr>
-          <td style="cursor:pointer;" onclick="openInfo('isu_buli')"><span style="color:#F1948A;font-weight:600;text-decoration:underline dotted rgba(241,148,138,0.5);">Buli &amp; Ponteng Sekolah</span></td>
+          <td style="cursor:pointer;" onclick="openInfo('isu_buli')"><span style="color:#F1948A;font-weight:600;text-decoration:underline dotted rgba(241,148,138,0.5);">Buli &amp; Ponteng Sekolah &nbsp;👆</span></td>
           <td>Lakonan Situasi Buli  &middot;  Bengkel Komunikasi Berhemah  &middot;  Role Play  &middot;  Sudut Aduan Selamat</td>
           <td>Empati, keberanian melapor &amp; budaya hormat</td>
         </tr>
         <tr>
-          <td style="cursor:pointer;" onclick="openInfo('isu_siber')"><span style="color:#F1948A;font-weight:600;text-decoration:underline dotted rgba(241,148,138,0.5);">Ancaman Scammer</span></td>
+          <td style="cursor:pointer;" onclick="openInfo('isu_siber')"><span style="color:#F1948A;font-weight:600;text-decoration:underline dotted rgba(241,148,138,0.5);">Ancaman Scammer &nbsp;👆</span></td>
           <td>Kuiz Keselamatan Siber  &middot;  Simulasi Scam Online  &middot;  Bengkel Literasi Digital Keluarga  &middot;  Literasi Kewangan Keluarga  &middot;  Ceramah Keselamatan Media Sosial</td>
           <td>Kesedaran penipuan, privasi &amp; keselamatan dalam talian</td>
         </tr>
         <tr>
-          <td style="cursor:pointer;" onclick="openInfo('isu_penyakit')"><span style="color:#F1948A;font-weight:600;text-decoration:underline dotted rgba(241,148,138,0.5);">Penularan Penyakit</span></td>
+          <td style="cursor:pointer;" onclick="openInfo('isu_penyakit')"><span style="color:#F1948A;font-weight:600;text-decoration:underline dotted rgba(241,148,138,0.5);">Penularan Penyakit &nbsp;👆</span></td>
           <td>Senamrobik Keluarga Sihat  &middot;  Demonstrasi Kebersihan Tangan  &middot;  Pemeriksaan Kesihatan Asas</td>
           <td>Budaya hidup sihat &amp; pencegahan penyakit</td>
         </tr>
         <tr>
-          <td style="cursor:pointer;" onclick="openInfo('isu_keluarga')"><span style="color:#F1948A;font-weight:600;text-decoration:underline dotted rgba(241,148,138,0.5);">Keruntuhan Institusi Keluarga</span></td>
+          <td style="cursor:pointer;" onclick="openInfo('isu_keluarga')"><span style="color:#F1948A;font-weight:600;text-decoration:underline dotted rgba(241,148,138,0.5);">Keruntuhan Institusi Keluarga &nbsp;👆</span></td>
           <td>Bengkel Keibubapaan Positif  &middot;  Family Bonding  &middot;  Sesi Komunikasi Keluarga  &middot;  Aku Janji Keluarga Sejahtera</td>
           <td>Hubungan kukuh &amp; kemahiran selesai konflik</td>
         </tr>
@@ -1667,7 +1724,7 @@
             <text x="65" y="78" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="Inter,sans-serif">SASARAN</text>
           </svg>
           <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.95);margin-top:6px;">Kehadiran Peserta</div>
-          <div style="font-size:9.5px;color:rgba(255,255,255,0.45);">min 100 orang/siri</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.55);">min 100 orang/siri</div>
         </div>
         <div style="text-align:center;flex:1;min-width:130px;">
           <svg width="110" height="110" viewBox="0 0 130 130">
@@ -1677,7 +1734,7 @@
             <text x="65" y="78" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="Inter,sans-serif">SASARAN</text>
           </svg>
           <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.95);margin-top:6px;">Peningkatan Pengetahuan</div>
-          <div style="font-size:9.5px;color:rgba(255,255,255,0.45);">soal selidik pra-pasca</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.55);">soal selidik pra-pasca</div>
         </div>
         <div style="text-align:center;flex:1;min-width:130px;">
           <svg width="110" height="110" viewBox="0 0 130 130">
@@ -1687,7 +1744,7 @@
             <text x="65" y="78" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="Inter,sans-serif">SASARAN</text>
           </svg>
           <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.95);margin-top:6px;">Kepuasan Peserta</div>
-          <div style="font-size:9.5px;color:rgba(255,255,255,0.45);">borang penilaian</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.55);">borang penilaian</div>
         </div>
         <div style="text-align:center;flex:1;min-width:130px;">
           <svg width="110" height="110" viewBox="0 0 130 130">
@@ -1697,15 +1754,15 @@
             <text x="65" y="78" text-anchor="middle" fill="rgba(255,255,255,0.4)" font-size="9" font-family="Inter,sans-serif">SASARAN</text>
           </svg>
           <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.95);margin-top:6px;">Penggerak Aktif Susulan</div>
-          <div style="font-size:9.5px;color:rgba(255,255,255,0.45);">aku janji + pelan tindakan</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.55);">aku janji + pelan tindakan</div>
         </div>
         <div style="text-align:center;flex:1;min-width:130px;">
           <div style="width:110px;height:110px;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;background:rgba(39,174,96,0.12);border:2px solid #27AE60;border-radius:50%;">
             <div style="font-size:26px;font-weight:800;color:#82E0AA;font-family:'Plus Jakarta Sans',sans-serif;">>=1</div>
-            <div style="font-size:8.5px;color:rgba(255,255,255,0.45);margin-top:2px;">DELIVERABLE</div>
+            <div style="font-size:11px;color:rgba(255,255,255,0.45);margin-top:2px;">DELIVERABLE</div>
           </div>
           <div style="font-size:11px;font-weight:600;color:rgba(255,255,255,0.95);margin-top:6px;">Pelan Tindakan Komuniti</div>
-          <div style="font-size:9.5px;color:rgba(255,255,255,0.45);">diwujudkan hasil program</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.55);">diwujudkan hasil program</div>
         </div>
       </div>
     </div>
@@ -1722,21 +1779,21 @@
     <div class="sec-div" style="margin:14px 0 12px;"><div class="sec-div-line"></div><div class="sec-div-label">Rantaian Impak Program A2</div><div class="sec-div-line"></div></div>
     <div style="display:flex;align-items:stretch;gap:0;margin-bottom:14px;">
       <div style="flex:1;background:rgba(180,96,124,0.07);border:1px solid rgba(180,96,124,0.20);border-radius:10px 0 0 10px;padding:13px 14px;backdrop-filter:blur(10px);">
-        <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,128,191,0.7);margin-bottom:8px;">Input</div>
+        <div style="font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,128,191,0.7);margin-bottom:8px;">Input</div>
         <div style="font-size:11.5px;color:rgba(255,255,255,0.75);line-height:1.6;">100 peserta / siri<br>5 isu sosial difokus<br>Fasilitator terlatih<br>Modul BPKOM 2026</div>
       </div>
       <div style="display:flex;align-items:center;padding:0 6px;background:rgba(255,255,255,0.04);border-top:1px solid rgba(139,92,246,0.2);border-bottom:1px solid rgba(139,92,246,0.2);">
         <div style="font-size:18px;color:rgba(255,128,191,0.5);">-></div>
       </div>
       <div style="flex:1;background:rgba(180,96,124,0.04);border-top:1px solid rgba(139,92,246,0.25);border-bottom:1px solid rgba(139,92,246,0.25);padding:13px 14px;backdrop-filter:blur(10px);">
-        <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,128,191,0.7);margin-bottom:8px;">Proses</div>
+        <div style="font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,128,191,0.7);margin-bottom:8px;">Proses</div>
         <div style="font-size:11.5px;color:rgba(255,255,255,0.75);line-height:1.6;">Ceramah Motivasi<br>LDK Kepimpinan<br>Bengkel Komunikasi<br>Aku Janji Keluarga</div>
       </div>
       <div style="display:flex;align-items:center;padding:0 6px;background:rgba(255,255,255,0.04);border-top:1px solid rgba(139,92,246,0.2);border-bottom:1px solid rgba(139,92,246,0.2);">
         <div style="font-size:18px;color:rgba(255,128,191,0.5);">-></div>
       </div>
       <div style="flex:1;background:rgba(95,168,130,0.07);border:1px solid rgba(95,168,130,0.25);border-radius:0 10px 10px 0;padding:13px 14px;backdrop-filter:blur(10px);">
-        <div style="font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(95,168,130,0.7);margin-bottom:8px;">Output</div>
+        <div style="font-size:11.5px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(95,168,130,0.7);margin-bottom:8px;">Output</div>
         <div style="font-size:11.5px;color:rgba(255,255,255,0.75);line-height:1.6;">>=90% hadir<br>>=80% ilmu meningkat<br>>=85% puas hati<br>>=70% jadi penggerak</div>
       </div>
     </div>
@@ -2001,22 +2058,78 @@
       </div>
       <div>
         <div class="sec-div" style="margin-top:0;"><div class="sec-div-line"></div><div class="sec-div-label">Rantaian Impak Ekonomi</div><div class="sec-div-line"></div></div>
-        <div class="flow" style="flex-direction:column;gap:10px;">
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div class="flow-box" style="background:rgba(13,122,110,0.2);border-color:rgba(13,122,110,0.4);flex:1;">Rumah bersih & cantik</div>
+        <div style="display:flex;flex-direction:column;gap:0;padding:4px 0;">
+
+          <!-- Node 1 -->
+          <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;background:linear-gradient(135deg,rgba(13,122,110,0.25),rgba(13,122,110,0.08));border:1px solid rgba(13,122,110,0.5);border-radius:12px;position:relative;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(13,122,110,0.35);border:1px solid rgba(13,122,110,0.6);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#5DCEC4" stroke-width="2" width="18" height="18"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:10px;font-weight:800;color:#5DCEC4;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Fasa 1</div>
+              <div style="font-size:12.5px;font-weight:700;color:#fff;">Rumah Bersih &amp; Cantik</div>
+              <div style="font-size:10.5px;color:rgba(255,255,255,0.5);margin-top:1px;">Standard estetika &amp; kebersihan kediaman</div>
+            </div>
+            <div style="font-size:10px;font-weight:700;color:#5DCEC4;white-space:nowrap;">Input</div>
           </div>
-          <div style="text-align:center;font-size:20px;color:rgba(255,255,255,0.25);">v</div>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div class="flow-box" style="background:rgba(26,188,156,0.15);border-color:rgba(26,188,156,0.3);flex:1;"> Sudut warisan ikonik</div>
+
+          <!-- Arrow 1 -->
+          <div style="display:flex;justify-content:center;align-items:center;height:24px;">
+            <div style="width:2px;height:12px;background:linear-gradient(#5DCEC4,#1ABC9C);border-radius:1px;"></div>
+            <svg viewBox="0 0 12 8" width="12" height="8" style="position:absolute;margin-top:20px;"><polygon points="6,8 0,0 12,0" fill="#1ABC9C" opacity="0.8"/></svg>
           </div>
-          <div style="text-align:center;font-size:20px;color:rgba(255,255,255,0.25);">v</div>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div class="flow-box" style="background:rgba(243,156,18,0.15);border-color:rgba(243,156,18,0.3);flex:1;">Tarikan pelancong domestik</div>
+
+          <!-- Node 2 -->
+          <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;background:linear-gradient(135deg,rgba(26,188,156,0.22),rgba(26,188,156,0.07));border:1px solid rgba(26,188,156,0.45);border-radius:12px;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(26,188,156,0.3);border:1px solid rgba(26,188,156,0.55);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#1ABC9C" stroke-width="2" width="18" height="18"><polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:10px;font-weight:800;color:#1ABC9C;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Fasa 2</div>
+              <div style="font-size:12.5px;font-weight:700;color:#fff;">Sudut Warisan Ikonik</div>
+              <div style="font-size:10.5px;color:rgba(255,255,255,0.5);margin-top:1px;">Identiti visual &amp; khazanah budaya kampung</div>
+            </div>
+            <div style="font-size:10px;font-weight:700;color:#1ABC9C;white-space:nowrap;">Proses</div>
           </div>
-          <div style="text-align:center;font-size:20px;color:rgba(255,255,255,0.25);">v</div>
-          <div style="display:flex;align-items:center;gap:10px;">
-            <div class="flow-box" style="background:rgba(39,174,96,0.15);border-color:rgba(39,174,96,0.3);flex:1;"> Pendapatan ekonomi hiliran</div>
+
+          <!-- Arrow 2 -->
+          <div style="display:flex;justify-content:center;align-items:center;height:24px;">
+            <div style="width:2px;height:12px;background:linear-gradient(#1ABC9C,#F39C12);border-radius:1px;"></div>
+            <svg viewBox="0 0 12 8" width="12" height="8" style="position:absolute;margin-top:20px;"><polygon points="6,8 0,0 12,0" fill="#F39C12" opacity="0.8"/></svg>
           </div>
+
+          <!-- Node 3 -->
+          <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;background:linear-gradient(135deg,rgba(243,156,18,0.22),rgba(243,156,18,0.07));border:1px solid rgba(243,156,18,0.45);border-radius:12px;">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(243,156,18,0.3);border:1px solid rgba(243,156,18,0.55);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#F5C842" stroke-width="2" width="18" height="18"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:10px;font-weight:800;color:#F5C842;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Fasa 3</div>
+              <div style="font-size:12.5px;font-weight:700;color:#fff;">Tarikan Pelancong Domestik</div>
+              <div style="font-size:10.5px;color:rgba(255,255,255,0.5);margin-top:1px;">Seni bina, kraf, dapur tradisi, tarian, silat</div>
+            </div>
+            <div style="font-size:10px;font-weight:700;color:#F5C842;white-space:nowrap;">Output</div>
+          </div>
+
+          <!-- Arrow 3 -->
+          <div style="display:flex;justify-content:center;align-items:center;height:24px;">
+            <div style="width:2px;height:12px;background:linear-gradient(#F39C12,#27AE60);border-radius:1px;"></div>
+            <svg viewBox="0 0 12 8" width="12" height="8" style="position:absolute;margin-top:20px;"><polygon points="6,8 0,0 12,0" fill="#27AE60" opacity="0.8"/></svg>
+          </div>
+
+          <!-- Node 4 — Outcome -->
+          <div style="display:flex;align-items:center;gap:12px;padding:11px 14px;background:linear-gradient(135deg,rgba(39,174,96,0.28),rgba(39,174,96,0.10));border:2px solid rgba(39,174,96,0.6);border-radius:12px;box-shadow:0 0 16px rgba(39,174,96,0.15);">
+            <div style="width:36px;height:36px;border-radius:10px;background:rgba(39,174,96,0.35);border:1px solid rgba(39,174,96,0.65);display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#2ECC71" stroke-width="2" width="18" height="18"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:10px;font-weight:800;color:#2ECC71;letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;">Outcome</div>
+              <div style="font-size:12.5px;font-weight:700;color:#fff;">Pendapatan Ekonomi Hiliran</div>
+              <div style="font-size:10.5px;color:rgba(255,255,255,0.5);margin-top:1px;">Komuniti berdaya saing &amp; mampan ekonomi</div>
+            </div>
+            <div style="font-size:10px;font-weight:700;color:#2ECC71;white-space:nowrap;">✓ Impak</div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -2786,15 +2899,15 @@ const DETAIL = {
 
   // S6  -  A2 aktiviti penuh
   s6_aktiviti: { t: '[AKTIVITI] Jadual Aktiviti Penuh Mengikut 5 Isu Sosial', c: `
-    <div class="ip-section"><div class="ip-label">Ancaman Dadah</div>
+    <div class="ip-section"><div class="ip-label">Ancaman Dadah &nbsp;👆</div>
     <div class="ip-text">Simulasi "Pilihan Hidup Saya"  -  Ceramah Anti Dadah  -  Forum Bekas Penagih Berjaya  -  Aku Janji Keluarga Bebas Dadah</div></div>
-    <div class="ip-section"><div class="ip-label">Buli &amp; Ponteng Sekolah</div>
+    <div class="ip-section"><div class="ip-label">Buli &amp; Ponteng Sekolah &nbsp;👆</div>
     <div class="ip-text">Lakonan Situasi Buli  -  Bengkel Komunikasi Berhemah  -  Role Play  -  Sudut Aduan Selamat</div></div>
-    <div class="ip-section"><div class="ip-label">Ancaman Scammer</div>
+    <div class="ip-section"><div class="ip-label">Ancaman Scammer &nbsp;👆</div>
     <div class="ip-text">Kuiz Keselamatan Siber  -  Simulasi Scam Online  -  Bengkel Literasi Digital Keluarga  -  Literasi Kewangan Keluarga  -  Ceramah Keselamatan Media Sosial</div></div>
-    <div class="ip-section"><div class="ip-label">Penularan Penyakit</div>
+    <div class="ip-section"><div class="ip-label">Penularan Penyakit &nbsp;👆</div>
     <div class="ip-text">Senamrobik Keluarga Sihat  -  Demonstrasi Kebersihan Tangan  -  Pemeriksaan Kesihatan Asas</div></div>
-    <div class="ip-section"><div class="ip-label">Keruntuhan Institusi Keluarga</div>
+    <div class="ip-section"><div class="ip-label">Keruntuhan Institusi Keluarga &nbsp;👆</div>
     <div class="ip-text">Bengkel Keibubapaan Positif  -  Family Bonding  -  Sesi Komunikasi Keluarga  -  Aku Janji Keluarga Sejahtera</div></div>` },
 
   // S7  -  A2 KPI detail
@@ -2977,6 +3090,8 @@ function goTo(n, pushHistory=true) {
   const label = (cur+1) + ' / ' + TOTAL;
   counter.textContent = label;
   numDisp.textContent = label;
+  const tnc = document.getElementById('tn-counter');
+  if (tnc) tnc.textContent = label;
   prog.style.width = ((cur+1)/TOTAL*100) + '%;'
 
   // Back button
@@ -3662,7 +3777,7 @@ const INFO = {
     <div class="ip-section"><div class="ip-label">8 Unit Ahli Jawatankuasa</div>
     <div class="ip-badge-row"><span class="ip-badge">Urusetia Program</span><span class="ip-badge">Protokol</span><span class="ip-badge">Pendaftaran</span><span class="ip-badge">Jamuan</span><span class="ip-badge">Dokumentasi</span><span class="ip-badge">Teknikal</span><span class="ip-badge">Keselamatan</span><span class="ip-badge">Penilaian Program</span></div></div>` },
   a2_indikator: { t: '[INDIKATOR] Jadual Indikator Prestasi Kualitatif  -  A2', c: `
-    <div class="ip-section"><div class="ip-text" style="font-size:12px;">Pengukuran tidak tertumpu kepada borang kepuasan semata-mata — diukur melalui perubahan sikap, tingkah laku, penglibatan komuniti dan kesan sosial jangka sederhana.</div></div>
+    <div class="ip-section"><div class="ip-text" style="font-size:14px;">Pengukuran tidak tertumpu kepada borang kepuasan semata-mata — diukur melalui perubahan sikap, tingkah laku, penglibatan komuniti dan kesan sosial jangka sederhana.</div></div>
     <table class="fin-table" style="font-size:11px;">
       <thead><tr><th>Objektif</th><th>Indikator</th><th>Kaedah</th><th>Sasaran</th></tr></thead>
       <tbody>
@@ -3673,7 +3788,7 @@ const INFO = {
         <tr><td>Komuniti prihatin kesejahteraan</td><td>Amalan sokongan sosial</td><td>Kajian kes &amp; dokumentasi kejayaan</td><td class="p2-col" style="font-weight:700;">&ge;3 kisah kejayaan</td></tr>
       </tbody>
     </table>
-    <div class="ip-section" style="margin-top:14px;"><div class="ip-label">Instrumen Sokongan</div><div class="ip-text" style="font-size:12px;">Pre &amp; post test + Kahoot (kesedaran bahaya sosial) &middot; Google Form (maklum balas peserta &amp; pemimpin komuniti)</div></div>` },
+    <div class="ip-section" style="margin-top:14px;"><div class="ip-label">Instrumen Sokongan</div><div class="ip-text" style="font-size:14px;">Pre &amp; post test + Kahoot (kesedaran bahaya sosial) &middot; Google Form (maklum balas peserta &amp; pemimpin komuniti)</div></div>` },
   isu_dadah: { t: '[ISU-DADAH] Ancaman Dadah', c: `
     <div class="ip-section"><div class="ip-label">Aktiviti Program A2</div><ul class="ip-list"><li>Simulasi "Pilihan Hidup Saya"</li><li>Ceramah Anti Dadah</li><li>Forum Bekas Penagih Berjaya</li><li>Aku Janji Keluarga Bebas Dadah</li></ul></div>
     <div class="ip-section"><div class="ip-label">Kerjasama Agensi Kerajaan</div><div class="ip-text">AADK · PDRM · KPM · Jabatan Penjara</div></div>
@@ -3759,43 +3874,47 @@ function openKuizKenegaraanPdf() { openPdfPopup(PDF_KENEGARAAN, ' Kuiz Kenegaraa
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
       <div>
         <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">&#128193; Repositori Dokumen</div>
-        <div style="font-size:13px;color:var(--t2);">Garis Panduan Program BPKOM 2026</div>
+        <div style="font-size:13px;color:var(--t2);">Garis Panduan Program BPKOM 2026 &middot; Lihat PDF / Muat Turun DOCX</div>
       </div>
       <button onclick="closeRepo()" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:var(--t2);font-size:18px;width:34px;height:34px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&times;</button>
     </div>
     <div style="display:flex;flex-direction:column;gap:10px;">
-      <a href="https://github.com/BroTaufik/bpkom-2026/raw/main/A1.GP%20Kesedaran%20Sivik%20dan%20Kenegaraan.docx" target="_blank" style="display:flex;align-items:center;gap:14px;padding:14px 16px;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:10px;text-decoration:none;" onmouseover="this.style.background='rgba(212,175,55,0.12)'" onmouseout="this.style.background='rgba(212,175,55,0.06)'">
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(212,175,55,0.06);border:1px solid rgba(212,175,55,0.2);border-radius:10px;">
         <div style="width:38px;height:38px;background:rgba(212,175,55,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">&#128196;</div>
-        <div style="flex:1;">
+        <div style="flex:1;min-width:0;">
           <div style="font-size:13px;font-weight:700;color:#E6CC7A;">A1 &middot; Garis Panduan Kesedaran Sivik &amp; Kenegaraan</div>
-          <div style="font-size:11px;color:var(--t3);margin-top:2px;">DOCX &middot; Klik untuk muat turun</div>
+          <div style="font-size:11px;color:var(--t3);margin-top:2px;">PDF &middot; Lihat terus atau muat turun DOCX</div>
         </div>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="flex-shrink:0;color:var(--t3);"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-      <a href="https://github.com/BroTaufik/bpkom-2026/raw/main/A2.GP%20Program%20Motivasi%20%26%20Kepimpinan.docx" target="_blank" style="display:flex;align-items:center;gap:14px;padding:14px 16px;background:rgba(180,96,124,0.06);border:1px solid rgba(180,96,124,0.2);border-radius:10px;text-decoration:none;" onmouseover="this.style.background='rgba(180,96,124,0.12)'" onmouseout="this.style.background='rgba(180,96,124,0.06)'">
+        <button onclick="openPdf('A1.pdf','A1 - Garis Panduan Kesedaran Sivik &amp; Kenegaraan')" title="Lihat PDF" style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:rgba(212,175,55,0.15);border:1px solid rgba(212,175,55,0.35);border-radius:8px;color:#E6CC7A;font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" style="flex-shrink:0;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Lihat</button>
+        <a href="https://github.com/BroTaufik/bpkom-2026/raw/main/A1.GP%20Kesedaran%20Sivik%20dan%20Kenegaraan.docx" target="_blank" title="Muat turun DOCX" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--t3);flex-shrink:0;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="flex-shrink:0;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(180,96,124,0.06);border:1px solid rgba(180,96,124,0.2);border-radius:10px;">
         <div style="width:38px;height:38px;background:rgba(180,96,124,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">&#128196;</div>
-        <div style="flex:1;">
+        <div style="flex:1;min-width:0;">
           <div style="font-size:13px;font-weight:700;color:#D9A3B5;">A2 &middot; Garis Panduan Program Motivasi &amp; Kepimpinan</div>
-          <div style="font-size:11px;color:var(--t3);margin-top:2px;">DOCX &middot; Klik untuk muat turun</div>
+          <div style="font-size:11px;color:var(--t3);margin-top:2px;">PDF &middot; Lihat terus atau muat turun DOCX</div>
         </div>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="flex-shrink:0;color:var(--t3);"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-      <a href="https://github.com/BroTaufik/bpkom-2026/raw/main/A3.Program%20Keceriaan%20Kampung.docx" target="_blank" style="display:flex;align-items:center;gap:14px;padding:14px 16px;background:rgba(95,168,130,0.06);border:1px solid rgba(95,168,130,0.2);border-radius:10px;text-decoration:none;" onmouseover="this.style.background='rgba(95,168,130,0.12)'" onmouseout="this.style.background='rgba(95,168,130,0.06)'">
+        <button onclick="openPdf('A2.pdf','A2 - Garis Panduan Program Motivasi &amp; Kepimpinan')" title="Lihat PDF" style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:rgba(180,96,124,0.15);border:1px solid rgba(180,96,124,0.35);border-radius:8px;color:#D9A3B5;font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" style="flex-shrink:0;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Lihat</button>
+        <a href="https://github.com/BroTaufik/bpkom-2026/raw/main/A2.GP%20Program%20Motivasi%20%26%20Kepimpinan.docx" target="_blank" title="Muat turun DOCX" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--t3);flex-shrink:0;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="flex-shrink:0;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(95,168,130,0.06);border:1px solid rgba(95,168,130,0.2);border-radius:10px;">
         <div style="width:38px;height:38px;background:rgba(95,168,130,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">&#128196;</div>
-        <div style="flex:1;">
+        <div style="flex:1;min-width:0;">
           <div style="font-size:13px;font-weight:700;color:#A3CFB8;">A3 &middot; Garis Panduan Program Keceriaan Kampung</div>
-          <div style="font-size:11px;color:var(--t3);margin-top:2px;">DOCX &middot; Klik untuk muat turun</div>
+          <div style="font-size:11px;color:var(--t3);margin-top:2px;">PDF &middot; Lihat terus atau muat turun DOCX</div>
         </div>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="flex-shrink:0;color:var(--t3);"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
-      <a href="https://github.com/BroTaufik/bpkom-2026/raw/main/A4.GP%20Laman%20Agro%20Bistari.docx" target="_blank" style="display:flex;align-items:center;gap:14px;padding:14px 16px;background:rgba(224,138,60,0.06);border:1px solid rgba(224,138,60,0.2);border-radius:10px;text-decoration:none;" onmouseover="this.style.background='rgba(224,138,60,0.12)'" onmouseout="this.style.background='rgba(224,138,60,0.06)'">
+        <button onclick="openPdf('A3.pdf','A3 - Garis Panduan Program Keceriaan Kampung')" title="Lihat PDF" style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:rgba(95,168,130,0.15);border:1px solid rgba(95,168,130,0.35);border-radius:8px;color:#A3CFB8;font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" style="flex-shrink:0;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Lihat</button>
+        <a href="https://github.com/BroTaufik/bpkom-2026/raw/main/A3.Program%20Keceriaan%20Kampung.docx" target="_blank" title="Muat turun DOCX" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--t3);flex-shrink:0;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="flex-shrink:0;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+      </div>
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 16px;background:rgba(224,138,60,0.06);border:1px solid rgba(224,138,60,0.2);border-radius:10px;">
         <div style="width:38px;height:38px;background:rgba(224,138,60,0.15);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">&#128196;</div>
-        <div style="flex:1;">
+        <div style="flex:1;min-width:0;">
           <div style="font-size:13px;font-weight:700;color:#ECB077;">A4 &middot; Garis Panduan Laman Agro Bistari</div>
-          <div style="font-size:11px;color:var(--t3);margin-top:2px;">DOCX &middot; Klik untuk muat turun</div>
+          <div style="font-size:11px;color:var(--t3);margin-top:2px;">PDF &middot; Lihat terus atau muat turun DOCX</div>
         </div>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="flex-shrink:0;color:var(--t3);"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-      </a>
+        <button onclick="openPdf('A4.pdf','A4 - Garis Panduan Laman Agro Bistari')" title="Lihat PDF" style="display:flex;align-items:center;gap:6px;padding:8px 12px;background:rgba(224,138,60,0.15);border:1px solid rgba(224,138,60,0.35);border-radius:8px;color:#ECB077;font-size:11px;font-weight:700;cursor:pointer;flex-shrink:0;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15" style="flex-shrink:0;"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> Lihat</button>
+        <a href="https://github.com/BroTaufik/bpkom-2026/raw/main/A4.GP%20Laman%20Agro%20Bistari.docx" target="_blank" title="Muat turun DOCX" style="display:flex;align-items:center;justify-content:center;width:34px;height:34px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--t3);flex-shrink:0;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="flex-shrink:0;"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
+      </div>
     </div>
     <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06);font-size:10.5px;color:var(--t4);text-align:center;">
       Semua dokumen adalah versi rasmi BPKOM 2026 &middot; KEMAS &middot; KKDW
@@ -3807,5 +3926,125 @@ function openRepo(){document.getElementById('repo-overlay').style.display='flex'
 function closeRepo(){document.getElementById('repo-overlay').style.display='none';document.body.style.overflow='';}
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeRepo();});
 </script>
+
+<!-- TEAM MEMBERS POPUP -->
+<div id="team-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.78);backdrop-filter:blur(8px);z-index:9999;align-items:center;justify-content:center;" onclick="if(event.target===this)closeTeam()">
+  <div style="background:#0B1628;border:1px solid rgba(139,92,246,0.35);border-radius:16px;padding:28px 32px;max-width:640px;width:92%;max-height:82vh;overflow-y:auto;">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;">
+      <div>
+        <div style="font-size:11px;font-weight:700;color:#c4b5fd;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">&#128101; Ahli Kumpulan</div>
+        <div style="font-size:13px;color:var(--t2);">Kumpulan 5 &mdash; Pemerkasaan Minda Komuniti</div>
+      </div>
+      <button onclick="closeTeam()" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:var(--t2);font-size:18px;width:34px;height:34px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&times;</button>
+    </div>
+
+    <!-- Header jadual -->
+    <div style="display:grid;grid-template-columns:32px 1fr 1fr 1fr;gap:0;background:rgba(139,92,246,0.15);border:1px solid rgba(139,92,246,0.3);border-radius:10px 10px 0 0;padding:9px 14px;margin-bottom:0;">
+      <div style="font-size:10px;font-weight:700;color:#c4b5fd;letter-spacing:1px;">BIL</div>
+      <div style="font-size:10px;font-weight:700;color:#c4b5fd;letter-spacing:1px;">NAMA</div>
+      <div style="font-size:10px;font-weight:700;color:#c4b5fd;letter-spacing:1px;">JAWATAN</div>
+      <div style="font-size:10px;font-weight:700;color:#c4b5fd;letter-spacing:1px;">NEGERI</div>
+    </div>
+
+    <!-- Baris ahli -->
+    <div style="border:1px solid rgba(139,92,246,0.2);border-top:none;border-radius:0 0 10px 10px;overflow:hidden;">
+      <div style="display:grid;grid-template-columns:32px 1fr 1fr 1fr;gap:0;padding:11px 14px;background:rgba(212,175,55,0.08);border-bottom:1px solid rgba(255,255,255,0.04);">
+        <div style="font-size:11px;color:var(--t4);font-weight:600;">1</div>
+        <div style="font-size:12.5px;font-weight:700;color:#E6CC7A;">Encik Taufiq Bin Mohd Yusof</div>
+        <div style="font-size:11.5px;color:var(--t2);">Pengarah</div>
+        <div style="font-size:11.5px;color:var(--t3);">Sarawak</div>
+      </div>      <div style="display:grid;grid-template-columns:32px 1fr 1fr 1fr;gap:0;padding:11px 14px;background:transparent;border-bottom:1px solid rgba(255,255,255,0.04);">
+        <div style="font-size:11px;color:var(--t4);font-weight:600;">2</div>
+        <div style="font-size:12.5px;font-weight:500;color:rgba(255,255,255,0.85);">Puan Wan Norlee Binti Wan Ismail</div>
+        <div style="font-size:11.5px;color:var(--t2);">Pengarah</div>
+        <div style="font-size:11.5px;color:var(--t3);">Kelantan</div>
+      </div>      <div style="display:grid;grid-template-columns:32px 1fr 1fr 1fr;gap:0;padding:11px 14px;background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.04);">
+        <div style="font-size:11px;color:var(--t4);font-weight:600;">3</div>
+        <div style="font-size:12.5px;font-weight:500;color:rgba(255,255,255,0.85);">Encik Josipah Anak Sabas</div>
+        <div style="font-size:11.5px;color:var(--t2);">Penolong Pengarah Kanan</div>
+        <div style="font-size:11.5px;color:var(--t3);">Wilayah Persekutuan</div>
+      </div>      <div style="display:grid;grid-template-columns:32px 1fr 1fr 1fr;gap:0;padding:11px 14px;background:transparent;border-bottom:1px solid rgba(255,255,255,0.04);">
+        <div style="font-size:11px;color:var(--t4);font-weight:600;">4</div>
+        <div style="font-size:12.5px;font-weight:500;color:rgba(255,255,255,0.85);">Encik Asri Bin Jusoh</div>
+        <div style="font-size:11.5px;color:var(--t2);">PPMK PD</div>
+        <div style="font-size:11.5px;color:var(--t3);">Terengganu</div>
+      </div>      <div style="display:grid;grid-template-columns:32px 1fr 1fr 1fr;gap:0;padding:11px 14px;background:rgba(255,255,255,0.02);border-bottom:1px solid rgba(255,255,255,0.04);">
+        <div style="font-size:11px;color:var(--t4);font-weight:600;">5</div>
+        <div style="font-size:12.5px;font-weight:500;color:rgba(255,255,255,0.85);">Puan Zariqa Binti Mohd Zin</div>
+        <div style="font-size:11.5px;color:var(--t2);">Penolong Pengarah Kanan</div>
+        <div style="font-size:11.5px;color:var(--t3);">Negeri Sembilan</div>
+      </div>      <div style="display:grid;grid-template-columns:32px 1fr 1fr 1fr;gap:0;padding:11px 14px;background:transparent;border-bottom:1px solid rgba(255,255,255,0.04);">
+        <div style="font-size:11px;color:var(--t4);font-weight:600;">6</div>
+        <div style="font-size:12.5px;font-weight:500;color:rgba(255,255,255,0.85);">Encik Amirul Shazwan bin Mohd Kamil</div>
+        <div style="font-size:11.5px;color:var(--t2);">Penolong Pegawai Pembangunan Masyarakat</div>
+        <div style="font-size:11.5px;color:var(--t3);">Perak</div>
+      </div>      <div style="display:grid;grid-template-columns:32px 1fr 1fr 1fr;gap:0;padding:11px 14px;background:rgba(139,92,246,0.08);border-bottom:1px solid rgba(255,255,255,0.04);">
+        <div style="font-size:11px;color:var(--t4);font-weight:600;">7</div>
+        <div style="font-size:12.5px;font-weight:700;color:#c4b5fd;">Cik Fazilawaty Binti Ismail</div>
+        <div style="font-size:11.5px;color:var(--t2);">Penolong Pegawai Pembangunan Masyarakat</div>
+        <div style="font-size:11.5px;color:var(--t3);">Ibu Pejabat</div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px;padding-top:10px;border-top:1px solid rgba(255,255,255,0.06);font-size:10px;color:var(--t4);text-align:center;">
+      Kursus Peningkatan Kompetensi BPKOM 2026 &nbsp;&middot;&nbsp; KEMAS &nbsp;&middot;&nbsp; KKDW
+    </div>
+  </div>
+</div>
+<script>
+function openTeam(){document.getElementById('team-overlay').style.display='flex';document.body.style.overflow='hidden';}
+function closeTeam(){document.getElementById('team-overlay').style.display='none';document.body.style.overflow='';}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeTeam();closeRepo();}});
+</script>
+
+<!-- PDF VIEWER OVERLAY -->
+<div id="pdf-overlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.88);backdrop-filter:blur(10px);z-index:10000;flex-direction:column;" onclick="if(event.target===this)closePdf()">
+  <div style="display:flex;align-items:center;gap:12px;padding:12px 20px;background:#0B1628;border-bottom:1px solid rgba(212,175,55,0.25);flex-shrink:0;">
+    <div style="font-size:11px;font-weight:700;color:var(--gold);letter-spacing:1px;text-transform:uppercase;">&#128196; <span id="pdf-title">Dokumen</span></div>
+    <div style="margin-left:auto;display:flex;gap:8px;">
+      <a id="pdf-newtab" href="#" target="_blank" style="display:flex;align-items:center;gap:6px;padding:7px 13px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--t2);font-size:11px;font-weight:600;text-decoration:none;">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="13" height="13"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        Tab Baru
+      </a>
+      <button onclick="closePdf()" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:8px;color:var(--t2);font-size:17px;width:32px;height:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;">&times;</button>
+    </div>
+  </div>
+  <div style="flex:1;position:relative;background:#1a1a1a;">
+    <iframe id="pdf-frame" src="" style="position:absolute;inset:0;width:100%;height:100%;border:none;"></iframe>
+    <div id="pdf-fallback" style="display:none;position:absolute;inset:0;align-items:center;justify-content:center;flex-direction:column;gap:14px;color:var(--t2);font-size:13px;text-align:center;padding:24px;">
+      <div>Pelayar ini tidak menyokong paparan PDF terbenam.<br>Sila guna butang <b style="color:var(--gold);">Tab Baru</b> di atas.</div>
+    </div>
+  </div>
+</div>
+<script>
+function pdfEmbedUnsupported(){
+  return /Android/i.test(navigator.userAgent);
+}
+function openPdf(file, title){
+  var ov=document.getElementById('pdf-overlay');
+  document.getElementById('pdf-title').textContent=title;
+  document.getElementById('pdf-newtab').href=file;
+  var frame=document.getElementById('pdf-frame');
+  var fb=document.getElementById('pdf-fallback');
+  if(pdfEmbedUnsupported()){
+    frame.style.display='none'; fb.style.display='flex';
+  } else {
+    fb.style.display='none'; frame.style.display='block';
+    frame.src=file+'#toolbar=1&navpanes=0&view=FitH';
+  }
+  ov.style.display='flex';
+  document.body.style.overflow='hidden';
+}
+function closePdf(){
+  document.getElementById('pdf-overlay').style.display='none';
+  document.getElementById('pdf-frame').src='';
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'&&document.getElementById('pdf-overlay').style.display==='flex'){
+    e.stopImmediatePropagation(); closePdf();
+  }
+},true);
+</script>
+
 </body>
 </html>
